@@ -1,0 +1,184 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{caption}
+\usepackage{listings}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[parfill]{parskip} % removes indent on new paragraphs
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{longtable}
+
+\title{ETSN15 - Vultus - Project Mission 2.0}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.3\textwidth]{images/lund_uni_logo}\par\vspace{1cm}
+	\vspace{1cm}
+	{\scshape\Large ETSN15, \par}
+    {\scshape\Large Requirements Engineering \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Vultus - Project Mission 2.0 \par}
+	\vspace{2cm}
+	{\Large\itshape Edvin Havic, Martin Johansson, Niklas Bruce, \par}
+    {\Large\itshape Oscar Rydh, Peter Skopal \par}
+    \vspace{2cm}
+	supervised by\par
+	Daniel \textsc{Helgesson} @ LTH\par
+    \vspace{2cm}
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\subsection{Project Description}
+This project is done in the field of requirement engineering in collaboration with the start-up company Vultus~\cite{vultus} and LTH. The project will produce a requirements specification for a product owned and developed by Vultus. The main goal for the project from the students perspective is to use the theory learned in the course, and apply it to a requirement specification of a real product. Vultus goal is to get a requirements specification that they can use and continue building their product from.
+
+\subsection{Start-up Company Vultus}
+Vultus eliminates waste in farming by offering fertilizer prescriptions to farmers, through a satellite based web application. All agricultural inputs are spread evenly across fields despite enormous variation, resulting in waste. For example over 60\% of nitrogen goes to waste, leading to huge yield and environmental damages. Vultus helps farmers adjust important inputs to increase efficiency.
+
+\subsubsection{Current system and information sources}
+The main source of data would be multi spectral satellite data. Current data source is the
+Copernicus project~\cite{copernicus}, which allows for data access on a global scale, with a revisit rate of 5 days for every place on earth, at a 10m resolution. This data is free and there is a backlog of
+previous data.
+
+Data on crop damage would be collected from satellite images from previous years, where
+clear crop damage can be observed. There might exist open data sets that have stated problem
+areas, alternatively, crop damage inspection companies that we cooperate with could provide
+areas that were damaged. Possible indicators of damage could be alternative data sources,
+taken either from open data sets such as weather, soil information, or proprietary data sets
+such as the farmers pesticide/fertilizer/seeding dosages and timing, that could be gathered from
+Farm Management Systems that we are cooperating with.
+
+\section{System Context}
+Weeds, insects, fungus, drought and deficiencies are among the problems plaguing farmers
+worldwide. They cause tremendous damage to crops, and are often combated and controlled.
+The standard method to monitor these damages is by walking around the field. Walking limits
+the frequency that the field can be checked, and therefore issues go undetected for longer
+periods of time and cause tremendous damage.
+
+The proposed product idea is to apply machine learning to remotely sensed satellite data to
+detect and predict crop damage. This early detection system would at the earliest possible time
+detect problems in the field, and possibly even predict upcoming damage. This would warn the
+farmer and allow on the ground inspection and appropriate action to be taken. The goal is not to
+diagnose the problem, as this is almost impossible to do from remotely sensed data, however,
+using machine learning, it should be possible to notice indicators of upcoming crop damage to
+predict when areas will be damaged.
+
+The satellite data would be multi-spectral, and a direct indication of vegetation status. Common
+such indices are the Normalized Difference Vegetation Index (NDVI), that compares red and
+near infrared light to accurately depict crop status. When specific areas of a field have a
+decrease of those index values, it is likely due to crop damage. The proposed system would
+look at a time series of satellite data, taken every 5 days, of specific fields. This time series
+exists from previous years, dating back to the 80s. The system should be able to detect when
+certain areas of fields grow worse, automatically. However, parts of the field that are
+underperforming each year should not be detected as anomalies. These anomalies would be
+sent to the farmer to warn about current damages.
+
+The system will communicate with already existing modules, both with existing backend, but also with an interface as a separate module in a farmer management system~\cite{farmer_management_system}.
+
+\subsection{Similar products}
+There exist early warning systems based on weather, especially for extreme weather. However, those are limited to local environments. One local analysis based on data captured from aeroplanes exist (Mavrx). However, this has scalability issues and no global potential.
+
+
+\section{Main Goals}
+This project has multiple goals depending on the stakeholder. Here we will try to define each group's interests.
+
+\subsection{Students}
+For us as students the main goal is to gather industry experience in requirements analysis and requirement engineering. This is possible due to the cooperation between LTH and Vultus, where Vultus provides a project and devotes resources for interviews, discussions, etc. This enables us to test and practice the techniques and concepts provided by the faculty as they are described on a weekly basis.
+
+\subsection{Vultus}
+The main goal of Vultus is to investigate the above described product with a focus on finding requirements. The end deliverable is to produce a Software Requirements Specification (SRS) for an analytical tool that integrates with existing Farm Management Systems. Hopefully, the SRS should be complete enough, so that it can be given to a software consultant and be built without further information.
+
+\section{Initial Elicitation of System Requirements}
+The analytical tool is to be a part of an already existing system created by Vultus, and can roughly be divided into three main parts: Service Back-end, Integration with existing system and Customer Interface.
+
+\subsection{Service Back-end and Integration with Existing Systems}
+The service back-end is responsible for processing all data. This part of the system is the foundation of the analytical tool, since it also consists of the AI program responsible for processing the satellite data. Furthermore, this service needs to be integrated with the existing systems by, for example, exposing an API. 
+
+\subsection{Customer Interface}
+The Graphical User Interface (GUI) is the front-end of the service. This is what the end user (farmer) sees. It is responsible for visually presenting the state of the user's crops and its potential anomalies. The interface is a part of the analytical tool as well, and is to be integrated into existing Farmer Management Systems. 
+
+
+\section{Vultus Defined Stakeholders}
+\subsection{Customers}
+Given that the analysis can be generalized across crops and climate zones, every farmer could be a potential customer. Even smallholder farmers without internet can get SMS notifications. We believe this kind of analysis could drastically reduce crop loss. Pests alone reduce global yields by over 30\%. Most likely the initial customers would be industrialized farms with larger areas due to increased
+purchasing power, decreased ability to scout by foot and technological maturity.
+
+\subsection{Other stakeholders}
+Crop insurers have a huge interest in reducing crop loss due to expensive payouts (often hundreds of thousands of kr). Food security is a large issue for many developing countries. Early warnings can provide the chance to import food when food production is hurt, as well as decrease the loss from pests. Furthermore, all governments are concerned with guaranteeing domestic food security, hence subsidies on food production. The product would further their work in guaranteeing food security.
+
+\section{Timeline Planning}
+The project will take place over a period of seven weeks, starting the 6 of November. Depiction of planned deadlines and deliverables is shown in table~\ref{tab:timeline_planning}.  The main work on the SRS will be done on Tuesdays. Any remaining work will be divided among the group and coordinated using online communication tools. The project will also be worked on during scheduled exercises and meetings.
+
+\begin{table}[h!]
+\centering
+\caption{Timeline Planning. \textit{Release RX} in the table refers to a new release divided into two explicit parts: System Requirements and Project Experiences.}
+\label{tab:timeline_planning}
+\begin{tabular}{|l|ll|}
+\hline
+Phase		& Deliverables			& Deadline     \\ \hline
+Planning	& Project Mission v2	& 171113 09:00 \\ \hline
+Iteration 1	& Release R1			& 171120 09:00 \\ \hline
+\multirow{2}{*}{Iteration 2} & \begin{tabular}[c]{@{}l@{}}
+			Release R2\\
+            Validation Checklist\end{tabular}
+            						& 171204 09:00 \\ 
+           	& Validation Report		& 171208 09:00 \\ \hline
+\multirow{2}{*}{Iteration 3} 
+			& Conference Presentation	& 171210 15:00 \\
+            & Release R3				& 171217 23:59 \\ \hline
+\end{tabular}
+\end{table}
+
+
+\section{Responsibilities}
+\begin{table}[h!]
+\centering
+\caption{Group Responsibilities}
+\label{tab:reponsibilities}
+\begin{tabular}{|l|l|l|}
+\hline
+Oscar Rydh       & Project Manager 			\\ \hline
+Martin Johansson & Company Contact          \\ \hline
+Peter Skopal     & Supervisor Contact       \\ \hline
+Niklas Bruce     & Quality Assurance        \\ \hline
+Edvin Havic      & Configuration Management \\ \hline
+\end{tabular}
+\end{table}
+The responsibilities of the project is divided amongst the group members as depicted in table~\ref{tab:reponsibilities}. Martin handles the contact with Vultus, he sets up meetings and communicates with Vultus on behalf of the entire project group. Peter communicates with our course supervisor. Oscar is the project leader of the group. He is responsible for syncing the project effort and making sure that we deliver correct deliverable and that our deadlines are met. Edvin's responsibility is configuration management. He oversees the different versions of the documents. Niklas Bruce is responsible for the final look of the documents, i.e. making sure they meet certain standards and are well structured. The content of the deliverables is the responsibility of the entire project team. 
+\\
+The project group will be the drivers in this project and Vultus will provide information and resources to answer our questions regarding aspects of the product and domain. The project group is also given the right to make decisions regarding the project and the area around it. Weekly meetings will be held with Vultus at 13.00 on Tuesdays, the project group is responsible for setting the topics and discussion points of the meetings. We will also share our documents with Vultus so they can see our progress and comment on it so that we together can discuss the documents. 
+
+\begin{thebibliography}{}
+
+\bibitem{vultus}
+Vultus \url{http://www.vultus.se} Lastest Fetched: 2017-11-07.
+
+\bibitem{copernicus}
+Copernicus, Europe's eyes on Earth. \url{http://www.copernicus.eu} Latest Fetched: 2017-11-07.
+
+\bibitem{farmer_management_system}
+Computers and Electronics in Agriculture. \textit{Farm management systems and the Future Internet era} 2012 Elsevier B.V.
+
+\end{thebibliography}
+\end{document}
