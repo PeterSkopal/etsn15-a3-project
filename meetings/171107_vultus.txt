@@ -1,0 +1,64 @@
+Möte med Vultus
+
+project scope
+3 credits
+statement: Learning about vultus and mostly about requirements engineering
+
+Vultus says that they will allocate recources to answer our questions. We will be the driving factor in this project, we are also allowed to take decisions within the area and project.
+We are going to use slack for communication
+Weeklies at Tuesdays 13:00
+
+Questions
+
+Reducing pestdecides, right?
+
+Overview of the project, we’re looking at satalite data from fields, extracting data on where there are pest or desisiedss. Outcome is that we need to detect data. Detect the data ealier than the problem itself occurs. The direct challenge (positive outcome of the project) is to detect the anomelies. This i sscoped down pretty hard (according to Vultus) so it will be easier for us. Anomily detection is very impact´ful
+
+Goals
+Vultus interests it will become some type of analasys using existing satellite data, giving data to farmers giving value to farmers.
+Goal is to have a structure so we will be able to apply it internationally.
+
+Users
+of the system, farmer management systems, in extraction the farmor
+farmer user interacts with app webpage whatever
+farmer management interacts with API
+
+Already existing
+The main part are under development
+The conceptual design is together
+Fertilizer recomendaten
+
+Stakeholders
+Farmer management systems
+Farmer (main stakeholder)
+Economic devisors (giving advice to the farmer)
+
+VULTUS
+Base analasys for satelite data (not anomaly detection)
+
+Farmer in Skåne
+get information from the already existing system about the farming
+Anomaly detection will cover detecting change in the crop growth
+
+Interaction
+Farmer management system will display some kind of module from Vultus
+Design perspectevily we will need to display data (within the farmer management system)
+farmer management systems (like a CMS for formers) like data covering spendings and what kind of crop you have. This will use the outcome of the system giving information to the farmer.
+for example  Gives a “google map” of how the field is doing
+
+Cofigurable Product
+Is it possible to scale, customize the product?
+As it is now, it is not possible since this is robust and standardised. Vultus are focusing on large scale robustness.
+
+
+Reliability is important (if the accuracy are good)
+Think of the reasoning
+false negatives is not fine
+false positives are fine
+It is difficult (wont be possible) to be 100% accurate
+
+We can choose to write requirements about the product according to what we actually what to do, so it can be on the infrastructure, on the interface delivery.
+
+Send to Vultus:
+Information about ourselves
+Course information

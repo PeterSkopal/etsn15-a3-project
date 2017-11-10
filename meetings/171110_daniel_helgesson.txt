@@ -1,0 +1,13 @@
+Saknas:
+Någon form av schematisk bild av systemet
+
+Fler stakeholders?
+Betrakta oss själva som underkonsulter, vultus är produktägare
+
+Hur ska vi elicitera våra krav?
+
+Kolla på betygsättningskraven
+
+Rekommenderad läsning
+Kontextdiagram: Sida 21 och 23
+Req-levels: Kapitel 1.6
